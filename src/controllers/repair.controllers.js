@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 exports.findProducts = async (req, res) => {
   const repairs = await Repair.findAll({
     where: {
-      state: 'active',
+      state: ['active', 'completed'],
     },
     include: [
       {
@@ -64,7 +64,7 @@ exports.findProduct = catchAsync(async (req, res) => {
 exports.deleteProduct = catchAsync(async (req, res) => {
   const { repair } = req;
 
-  await repair.update({ state: 'disabled' });
+  await repair.update({ status: 'cancelled' });
 
   return res.status(200).json({
     status: 'success',

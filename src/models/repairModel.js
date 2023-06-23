@@ -29,11 +29,6 @@ const Repair = db.define('repairs', {
     allowNull: false,
     defaultValue: 'pending',
   },
-  state: {
-    type: DataTypes.ENUM('active', 'disabled'),
-    allowNull: false,
-    defaultValue: 'active',
-  },
 });
 
 module.exports = Repair;
